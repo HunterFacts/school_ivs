@@ -1,3 +1,4 @@
+var ch = 1;
 $(document).ready(function(){
     $('.modal').modal();
     $('.datepicker').datepicker({
@@ -16,6 +17,16 @@ $(document).ready(function(){
           ]
         }
     });
+    setTimeout(function tick() {
+      if (ch == 1){
+        $('body').css('background-image', 'url("img/background.png")');
+        ch = 2;
+      }
+      else if (ch == 2){
+        $('body').css('background-image', 'url("img/background68.png")');
+        ch == 1;
+      }
+    }, 30000);
     $.getJSON('http://localhost:3000/inv?_limit=5',
     function(data) {
       $.each(data, function(key,value) {
