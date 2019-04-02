@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/materialize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Список накладных</title>
+</head>
+<body>
+  <header>
+    <nav>
+       <div class="nav-wrapper">
+         <a href="#!" class="brand-logo"><i class="material-icons">cloud</i>Logo</a>
+         <ul class="right hide-on-med-and-down">
+           <li><a href="#"><i class="material-icons">search</i></a></li>
+           <li><a href="#"><i class="material-icons">view_module</i></a></li>
+           <li><a href="#"><i class="material-icons">refresh</i></a></li>
+           <li><a href="#"><i class="material-icons">more_vert</i></a></li>
+         </ul>
+       </div>
+     </nav>
+  </header>
+
+  <div id="modal-create" class="modal">
+    <div class="modal-content">
+      <div class="row" style="margin-bottom: 0;">
+        <form class="col s12">
+          <div class="row">
+            <div class="input-field col s6">
+              <input id="number" type="text" class="validate">
+              <label id="number-l" for="number">Number</label>
+            </div>
+            <div class="input-field col s6">
+              <input id="invoice_date" type="text" class="validate datepicker">
+              <label id="invoice_date-l" for="invoice_date">Invoice Date</label>
+            </div>
+            <div class="input-field col s6">
+              <input id="supply_date" type="text" class="validate datepicker">
+              <label id="supply_date-l" for="supply_date">Supply Date</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">mode_edit</i>
+              <textarea id="comment" class="materialize-textarea"></textarea>
+              <label id="comment-l" for="comment">Comment:</label>
+            </div>
+          </div>
+          <div style="display: none;">
+            <input type="checkbox" id="checker" />
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn">Добавить</a>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s12">
+      <div class="row">
+          <div class="col s12 m10 offset-m1 content-flex">
+            <div id="add-card" class="card horizontal">
+              <a class="waves-effect waves-light btn modal-trigger" href="#modal-create"><i class="material-icons left">add_circle_outline</i>Добавить</a>
+            </div>
+            <div class="row">
+              <div class="col s12">
+                <div id="table-card" class="card horizontal">
+                  <table class="striped" id="table-main">
+                    <thead>
+                      <tr>
+                          <th>Дата создания</th>
+                          <th>No</th>
+                          <th>Supply</th>
+                          <th>Комментарий</th>
+                          <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s12" id="every-btn">
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</body>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/materialize.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+</html>

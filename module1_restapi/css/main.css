@@ -1,0 +1,46 @@
+body {
+  background-image: url('../img/background.png');
+}
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2') format('woff2');
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+#table-card , #add-card {
+  padding: 20px;
+}
+#modal-create, #number, #number-l, #invoice_date, #invoice_date-l, #supply_date, #supply_date-l, #comment, #comment-l {
+  color: white;
+}
+#modal-create .datepicker-modal{
+  color: rgba(0, 0, 0, 0.87);
+}
+#table-card , #add-card, #modal-create, #modal-create .datepicker-modal .datepicker-date-display{
+  background: rgb(58,161,126); /* Old browsers */
+  background: -moz-linear-gradient(left, rgba(58,161,126,1) 1%, rgba(0,83,126,1) 99%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, rgba(58,161,126,1) 1%,rgba(0,83,126,1) 99%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, rgba(58,161,126,1) 1%,rgba(0,83,126,1) 99%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3aa17e', endColorstr='#00537e',GradientType=1 ); /* IE6-9 */}
+.content-flex {
+  background-color: #f5f5f5;
+  margin-top: 5%;
+  padding: 30px;
+}
