@@ -11,6 +11,7 @@ $(document).ready(function(){
           $("#checker").prop("checked", false);
           $("#addBtn").html("Добавить");
           idValue = "0";
+          M.toast({html: 'Данные с формы очищены'});
       }
     });
     $('.datepicker').datepicker({
@@ -94,10 +95,10 @@ function CreateString(){
   var supply_date = htmlEscape($('#supply_date').val());
   var comment = htmlEscape($('#comment').val());
 
-  if (number != "" || number != null){
-    if (invoice != "" || invoice != null){
-      if (supply_date != "" || supply_date != null){
-        if (comment != "" || comment != null){
+  if (number != ""){
+    if (invoice != ""){
+      if (supply_date != ""){
+        if (comment != ""){
           if ($("#checker").prop("checked")){
             $.ajax({
               url: "https://my-cool-project-mlukanin.herokuapp.com/posts/" + idValue,
@@ -109,19 +110,12 @@ function CreateString(){
                 "supply": supply_date,
                 "comment": comment
               },
+              success:function (data){
+                M.toast({html: 'Запись обновлена'});
+                $('.modal').modal('close');
+              }
 
             });
-            $("#data_"+idValue+" td:nth-child(2)").html($('#number').val());
-            $("#data_"+idValue+" td:nth-child(1)").html($('#invoice_date').val());
-            $("#data_"+idValue+" td:nth-child(3)").html($('#supply_date').val());
-            $("#data_"+idValue+" td:nth-child(4)").html($('#comment').val());
-            idValue = 0;
-            $('#number').val("");
-            $('#supply_date').val("");
-            $('#comment').val("");
-            $('#invoice_date').val("");
-            $("#checker").prop("checked", false);
-            $("#addBtn").html("Добавить");
           }
           else {
             $.post('https://my-cool-project-mlukanin.herokuapp.com/posts',
@@ -130,6 +124,10 @@ function CreateString(){
                   "number": number,
                   "supply": supply_date,
                   "comment": comment
+                },
+                function (data){
+                  M.toast({html: 'Запись добавлена'});
+                  $('.modal').modal('close');
                 }
             )
           }
@@ -170,9 +168,13 @@ function Edit (editId){
 function Delete (deleteId){
   $.ajax({
     url: "https://my-cool-project-mlukanin.herokuapp.com/posts/" + deleteId,
-    type: "DELETE"
+    type: "DELETE",
+    success: function (data){
+      M.toast({html: 'Запись удалена'});
+      $("#data_"+deleteId).hide();
+    }
   });
-  $("#data_"+deleteId).hide();
+
 }
 
 function Reverse (){
@@ -194,10 +196,7 @@ function Reverse (){
     url = "";
   }
   if (searchText != ""){
-    if (searchId == 1){
-      url = url + "&q="+searchText;
-    }
-    else if (searchId ==2){
+    if (searchId ==2){
       url = url + "&number="+searchText;
     }
     else if (searchId ==3){
