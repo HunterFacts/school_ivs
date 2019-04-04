@@ -1,0 +1,58 @@
+{
+	"info": {
+		"_postman_id": "cc2bc136-7956-4193-908e-c61a2fc15fd1",
+		"name": "Testing2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Достать определенные записи",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://my-cool-project-mlukanin.herokuapp.com/posts?q={{key}}",
+					"protocol": "https",
+					"host": [
+						"my-cool-project-mlukanin",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"posts"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "{{key}}"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Достать определенные записи",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": ""
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		}
+	]
+}

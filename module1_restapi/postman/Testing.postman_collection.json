@@ -1,0 +1,153 @@
+{
+	"info": {
+		"_postman_id": "4b5aba2e-76b4-4663-abed-4ecd17c17ba2",
+		"name": "Testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Достать все записи",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://my-cool-project-mlukanin.herokuapp.com/posts",
+					"protocol": "https",
+					"host": [
+						"my-cool-project-mlukanin",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Добавить запись",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "create",
+							"value": " 06-04-2019",
+							"type": "text"
+						},
+						{
+							"key": "number",
+							"value": " INV-000099",
+							"type": "text"
+						},
+						{
+							"key": "supply",
+							"value": " 09-04-2019",
+							"type": "text"
+						},
+						{
+							"key": "comment",
+							"value": " HelloWorld",
+							"type": "text"
+						},
+						{
+							"key": "id",
+							"value": "mM7Fz90",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://my-cool-project-mlukanin.herokuapp.com/posts",
+					"protocol": "https",
+					"host": [
+						"my-cool-project-mlukanin",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Отредактировать запись",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "comment",
+							"value": " GoodBuyWorld",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://my-cool-project-mlukanin.herokuapp.com/posts/mM7Fz90",
+					"protocol": "https",
+					"host": [
+						"my-cool-project-mlukanin",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"posts",
+						"mM7Fz90"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Удалить запись",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://my-cool-project-mlukanin.herokuapp.com/posts/mM7Fz90",
+					"protocol": "https",
+					"host": [
+						"my-cool-project-mlukanin",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"posts",
+						"mM7Fz90"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
