@@ -1,6 +1,7 @@
 var ch = 1;
-var idValue = 0;
+var idValue = "0";
 $(document).ready(function(){
+    $('select').formSelect();
     $('.modal').modal({
       onCloseEnd: function(){
           $('#number').val("");
@@ -9,7 +10,7 @@ $(document).ready(function(){
           $('#invoice_date').val("");
           $("#checker").prop("checked", false);
           $("#addBtn").html("Добавить");
-          idValue = 0;
+          idValue = "0";
       }
     });
     $('.datepicker').datepicker({
@@ -38,7 +39,7 @@ $(document).ready(function(){
         ch == 1;
       }
     }, 30000);
-    $.getJSON('http://localhost:3000/inv?_limit=10',
+    $.getJSON('https://my-cool-project-mlukanin.herokuapp.com/posts?_limit=10',
     function(data) {
       $.each(data, function(key,value) {
         $('#table-main tbody').append(
@@ -48,8 +49,8 @@ $(document).ready(function(){
               +'<td>'+value.supply+'</td>'
               +'<td>'+value.comment+'</td>'
             +'<td style="width: 300px;">'
-              +'<a class="waves-effect waves-light btn modal-trigger" href="#modal-create" onclick="Edit ('+value.id+');" data_id="'+value.id+'"><i class="material-icons left">create</i>Изменить</a>'
-              +'<a class="waves-effect waves-light btn" onclick="Delete ('+value.id+');" data_id="'+value.id+'"><i class="material-icons left">clear</i>Удалить</a>'
+              +'<a class="waves-effect waves-light btn modal-trigger" href="#modal-create" onclick="Edit (\''+value.id+'\');" data_id="'+value.id+'"><i class="material-icons left">create</i>Изменить</a>'
+              +'<a class="waves-effect waves-light btn" onclick="Delete (\''+value.id+'\');" data_id="'+value.id+'"><i class="material-icons left">clear</i>Удалить</a>'
             +'</td>'
           +'</tr>'
         )
@@ -59,7 +60,7 @@ $(document).ready(function(){
 });
 
 function EveryBtn (id){
-  $.getJSON('http://localhost:3000/inv?_limit=10&_page='+id,
+  $.getJSON('https://my-cool-project-mlukanin.herokuapp.com/posts?_limit=10&_page='+id,
   function(data) {
     $.each(data, function(key,value) {
       $('#table-main tbody').append(
@@ -69,8 +70,8 @@ function EveryBtn (id){
             +'<td>'+value.supply+'</td>'
             +'<td>'+value.comment+'</td>'
           +'<td style="width: 300px;">'
-            +'<a class="waves-effect waves-light btn modal-trigger" href="#modal-create" onclick="Edit ('+value.id+');" data_id="'+value.id+'"><i class="material-icons left">create</i>Изменить</a>'
-            +'<a class="waves-effect waves-light btn" onclick="Delete ('+value.id+');" data_id="'+value.id+'"><i class="material-icons left">clear</i>Удалить</a>'
+            +'<a class="waves-effect waves-light btn modal-trigger" href="#modal-create" onclick="Edit (\''+value.id+'\');" data_id="'+value.id+'"><i class="material-icons left">create</i>Изменить</a>'
+            +'<a class="waves-effect waves-light btn" onclick="Delete (\''+value.id+'\');" data_id="'+value.id+'"><i class="material-icons left">clear</i>Удалить</a>'
           +'</td>'
         +'</tr>'
       )
@@ -99,7 +100,7 @@ function CreateString(){
         if (comment != "" || comment != null){
           if ($("#checker").prop("checked")){
             $.ajax({
-              url: "http://localhost:3000/inv/" + idValue,
+              url: "https://my-cool-project-mlukanin.herokuapp.com/posts/" + idValue,
               type: "PATCH",
               data:
               {
@@ -123,7 +124,7 @@ function CreateString(){
             $("#addBtn").html("Добавить");
           }
           else {
-            $.post('http://localhost:3000/inv',
+            $.post('https://my-cool-project-mlukanin.herokuapp.com/posts',
                 {
                   "create": invoice,
                   "number": number,
@@ -168,8 +169,73 @@ function Edit (editId){
 
 function Delete (deleteId){
   $.ajax({
-    url: "http://localhost:3000/inv/" + deleteId,
+    url: "https://my-cool-project-mlukanin.herokuapp.com/posts/" + deleteId,
     type: "DELETE"
   });
   $("#data_"+deleteId).hide();
 }
+
+function Reverse (){
+  var searchText = htmlEscape($('#search').val());
+  var searchId = htmlEscape($('#search-id').val());
+  var searchFilter = htmlEscape($('#filter').val());
+  var searchAsc = htmlEscape($('#asc').val());
+  var url = "_sort=";
+  if (searchFilter == 1){
+    url = url + "id";
+  }
+  else {
+    url = url="number";
+  }
+  if (searchAsc == 1){
+    url = url+"&_order=ASC";
+  }
+  else {
+    url = url+"&_order=DESC";
+  }
+  if (searchText != ""){
+    if (searchId == 1){
+      url = url + "&q="+searchText;
+    }
+    else if (searchId ==2){
+      url = url + "&number="+searchText;
+    }
+    else if (searchId ==3){
+      url = url + "&create="+searchText;
+    }
+    else if (searchId ==4){
+      url = url + "&supply="+searchText;
+    }
+    else if (searchId ==5){
+      url = url + "&comment="+searchText;
+    }
+    else {
+      url = url + "&q="+searchText;
+    }
+  }
+  $('#table-main tbody').html("");
+  $.getJSON('https://my-cool-project-mlukanin.herokuapp.com/posts?' + url,
+  function(data) {
+    $.each(data, function(key,value) {
+      $('#table-main tbody').append(
+        '<tr id="data_'+value.id+'">'
+            +'<td>'+value.create+'</td>'
+            +'<td>'+value.number+'</td>'
+            +'<td>'+value.supply+'</td>'
+            +'<td>'+value.comment+'</td>'
+          +'<td style="width: 300px;">'
+            +'<a class="waves-effect waves-light btn modal-trigger" href="#modal-create" onclick="Edit (\''+value.id+'\');" data_id="'+value.id+'"><i class="material-icons left">create</i>Изменить</a>'
+            +'<a class="waves-effect waves-light btn" onclick="Delete (\''+value.id+'\');" data_id="'+value.id+'"><i class="material-icons left">clear</i>Удалить</a>'
+          +'</td>'
+        +'</tr>'
+      )
+    });
+    $('#every-btn').html('<a class="waves-effect waves-light btn" onclick="EveryBtn(2)"><i class="material-icons left">add_circle_outline</i>Еще загрузить</a>');
+  });
+}
+$('#search').focus(function(){
+  $('#search').css("color","#9e9e9e");
+});
+$('#search').blur(function(){
+  $('#search').css("color","white");
+});
