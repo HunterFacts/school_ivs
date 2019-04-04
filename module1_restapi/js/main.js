@@ -63,22 +63,27 @@ $(document).ready(function(){
 function EveryBtn (id){
   $.getJSON('https://my-cool-project-mlukanin.herokuapp.com/posts?_limit=10&_page='+id,
   function(data) {
-    $.each(data, function(key,value) {
-      $('#table-main tbody').append(
-        '<tr id="data_'+value.id+'">'
-            +'<td>'+value.create+'</td>'
-            +'<td>'+value.number+'</td>'
-            +'<td>'+value.supply+'</td>'
-            +'<td>'+value.comment+'</td>'
-          +'<td style="width: 300px;">'
-            +'<a class="waves-effect waves-light btn modal-trigger" href="#modal-create" onclick="Edit (\''+value.id+'\');" data_id="'+value.id+'"><i class="material-icons left">create</i>Изменить</a>'
-            +'<a class="waves-effect waves-light btn" onclick="Delete (\''+value.id+'\');" data_id="'+value.id+'"><i class="material-icons left">clear</i>Удалить</a>'
-          +'</td>'
-        +'</tr>'
-      )
-    });
-    id=id+1;
-    $('#every-btn').html('<a class="waves-effect waves-light btn" onclick="EveryBtn('+id+')"><i class="material-icons left">add_circle_outline</i>Еще загрузить</a>');
+    if (data.length > 0){
+      $.each(data, function(key,value) {
+        $('#table-main tbody').append(
+          '<tr id="data_'+value.id+'">'
+              +'<td>'+value.create+'</td>'
+              +'<td>'+value.number+'</td>'
+              +'<td>'+value.supply+'</td>'
+              +'<td>'+value.comment+'</td>'
+            +'<td style="width: 300px;">'
+              +'<a class="waves-effect waves-light btn modal-trigger" href="#modal-create" onclick="Edit (\''+value.id+'\');" data_id="'+value.id+'"><i class="material-icons left">create</i>Изменить</a>'
+              +'<a class="waves-effect waves-light btn" onclick="Delete (\''+value.id+'\');" data_id="'+value.id+'"><i class="material-icons left">clear</i>Удалить</a>'
+            +'</td>'
+          +'</tr>'
+        )
+      });
+      id=id+1;
+      $('#every-btn').html('<a class="waves-effect waves-light btn" onclick="EveryBtn('+id+')"><i class="material-icons left">add_circle_outline</i>Еще загрузить</a>');
+    }
+    else {
+      M.toast({html: 'Данных больше нет'});
+    }
   });
 }
 function htmlEscape(str) {
