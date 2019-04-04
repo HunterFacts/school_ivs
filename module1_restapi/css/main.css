@@ -27,9 +27,14 @@ body {
 #table-card , #add-card {
   padding: 20px;
 }
-#modal-create, #number, #number-l, #invoice_date, #invoice_date-l, #supply_date, #supply_date-l, #comment, #comment-l, #search, .select-wrapper input.select-dropdown{
+#modal-create, #number, #number-l, #invoice_date,
+#invoice_date-l, #supply_date, #supply_date-l,
+#comment, #comment-l, #search,
+.select-wrapper input.select-dropdown,
+.screencard label {
   color: white;
 }
+
 .select-wrapper .caret {
   fill: white;
 }
@@ -62,6 +67,11 @@ body {
  }
 #modal-create .datepicker-modal{
   color: rgba(0, 0, 0, 0.87);
+}
+.screencard{
+  background: rgba(0,83,126,1);
+  margin: 20px;
+  color: white;
 }
 #table-card , #add-card, #modal-create, #modal-create .datepicker-modal .datepicker-date-display, #search-card{
   background: rgb(58,161,126); /* Old browsers */

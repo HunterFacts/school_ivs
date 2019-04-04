@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/materialize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Скриншоты</title>
+</head>
+<body style="background-image: url('img/background68.png');">
+  <header>
+    <nav>
+       <div class="nav-wrapper">
+         <a href="index.html" class="brand-logo"><i class="material-icons">cloud</i>Модуль первый</a>
+         <ul class="right hide-on-med-and-down">
+           <li><a href="#"><i class="material-icons">search</i></a></li>
+           <li><a href="#"><i class="material-icons">view_module</i></a></li>
+           <li><a href="#"><i class="material-icons">refresh</i></a></li>
+           <li><a href="#"><i class="material-icons">more_vert</i></a></li>
+         </ul>
+       </div>
+     </nav>
+  </header>
+  <div class="row" id="main">
+
+  </div>
+
+
+</body>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/materialize.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+      var check = 8;
+      var i = 1;
+      var text = [
+      '',
+      'Получение всех накладных , любое поле которых содержит цифру 7 в хроме',
+      'Получение всех накладных, любое поле которых содержит цифру 7 в postman',
+      'Получение всех накладных, значение поля number которых больше 10000',
+      'Создание накладной в postman',
+      'Удаление накладной в postman',
+      'Тесты номер 1',
+      'Тесты номер 2'
+      ];
+    while (i < check){
+      $('#main').append('<div class="screencard col s3 card" style="height: 300px;"><img class="materialboxed" style="width: 80%;" src="img/screen'+i+'.jpg"><label>'+text[i]+'</label></div>');
+      i++;
+    }
+     $('.materialboxed').materialbox();
+ });
+</script>
+</html>
