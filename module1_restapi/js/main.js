@@ -190,8 +190,8 @@ function Reverse (){
   if (searchAsc == 1){
     url = url+"&_order=ASC";
   }
-  else {
-    url = url+"&_order=DESC";
+  else if (searchAsc == 2){
+    url = "";
   }
   if (searchText != ""){
     if (searchId == 1){
